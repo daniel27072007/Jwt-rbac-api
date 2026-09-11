@@ -12,7 +12,7 @@ export const authMiddleware = (allowedRoles) => {
             req.userId = decoded.userId
             req.userRole = decoded.userRole
             if(!allowedRoles.includes(req.userRole)){
-                return res.status(403).json({ message: 'Forbiden' })
+                return res.status(403).json({ message: 'Forbidden' })
             }
             next()
         } catch (error) {

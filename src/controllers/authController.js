@@ -14,12 +14,11 @@ export const registerUser = async (req, res) => {
         if(registerData.role !== 'admin' && registerData.role !== 'employee' && registerData.role !== 'customer'){
             return res.status(400).json({ error: 'Bad Request', message: 'you can only input admin, employee or customer'})
         }
-        const bcryptPassword = await bcrypt.hash(registerData.password, 10)
         const userData = {
             name: registerData.name,
             email: registerData.email,
             role: registerData.role,
-            password: bcryptPassword
+            password: registerData.password
         }
         const registeredUser = new userModel(userData)
         const savedUser = await registeredUser.save()

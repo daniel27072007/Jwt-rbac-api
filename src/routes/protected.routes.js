@@ -4,7 +4,7 @@ import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 const protectedRouter = Router()
 
-protectedRouter.post('/customer', customerRoute)
+protectedRouter.post('/customer', authMiddleware(['customer', 'employee', 'admin']), customerRoute)
 
 protectedRouter.post('/employee', authMiddleware(['employee', 'admin']), employeeRoute)
 

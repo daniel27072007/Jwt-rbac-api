@@ -9,7 +9,10 @@ export const registerUser = async (req, res) => {
     try {
         const registerData = req.body
         if(!registerData.name || !registerData.email || !registerData.password || !registerData.role){
-            return res.status(400).json({ error: 'Bad Request', message: 'Name, Email and Password are required.'})
+            return res.status(400).json({ error: 'Bad Request', message: 'name, email, role and password are required.'})
+        }
+        if(registerData.role !== 'admin' && registerData.role !== 'employee' && registerData.role !== 'costumer'){
+            return res.status(400).json({ error: 'Bad Request', message: 'you can only input admin, employee or costumer'})
         }
         const bcryptPassword = await bcrypt.hash(registerData.password, 10)
         const userData = {

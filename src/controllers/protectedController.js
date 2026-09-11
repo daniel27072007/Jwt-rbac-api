@@ -1,6 +1,6 @@
-export const costumerRoute = async (req, res) => {
-    console.log('this is a route that costumers have access');
-    res.json({ message: 'Hello Costumer'})
+export const customerRoute = async (req, res) => {
+    console.log('this is a route that customers have access');
+    res.json({ message: 'Hello Customer'})
 }
 
 export const employeeRoute = async (req, res) => {
